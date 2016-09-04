@@ -90,7 +90,7 @@ function introFrame(tS) {
 	
 	// Fade out
 	if (startPressedTime) {
-		var blackOpacity = M.min((tS - startPressedTime) / 1000, 1); // TODO: 500ms delay
+		var blackOpacity = M.min((tS - startPressedTime - 500) / 1000, 1);
 		c.fillStyle = 'rgba(0, 0, 0, ' + blackOpacity + ')';
 		c.fillRect(0, 0, 320, 240);
 	}
@@ -104,12 +104,13 @@ function keyHandler(e) {
 	if (e.keyCode === 32) {
 		startPressedTime = performance.now();
 		p.classList.add('q');
-		hideText(); // TODO: 500ms delay
 		g.removeEventListener('keydown', keyHandler, false);
-		sT(endIntro, 1000); // TODO: 500ms delay
+		sT(endIntro, 500);
 	}
 }
 
-function endIntro() { return; }
+function endIntro() {
+	hideText();
+}
 
 var introReq = rAf(introFrame);

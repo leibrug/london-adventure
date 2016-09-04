@@ -1,0 +1,8 @@
+{
+  "name": "london-adventure",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp-concat": "^2.6.0",
+    "gulp-watch": "^4.3.9"
+  }
+}
