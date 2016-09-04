@@ -1,4 +1,79 @@
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	height: 100vh;
+	background: radial-gradient(circle, #333 15%, #111 40%);
+}
+
+div {
+	margin: auto;
+	width: 640px;
+	height: 480px;
+	position: relative;
+}
+
 canvas {
-	margin: 100px auto;
 	display: block;
+	outline: none;
+	transform: scale(2);
+	transform-origin: 0 0;
+	image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+p {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	padding: 16px;
+	line-height: 1.5;
+	font-family: monospace;
+	font-size: 16px;
+	color: #fff;
+	text-shadow: 1px 1px 0 #000;
+	opacity: 1;
+	transition: opacity .25s;
+}
+
+/* Centered */
+
+p.c {
+	text-align: center;
+	bottom: 50%;
+	transform: translateY(50%);
+}
+
+p.c.o {
+	bottom: 33%;
+}
+
+/* Faded */
+
+p.f {
+	opacity: 0;
+}
+
+/* Blinking */
+
+@keyframes blink {
+
+	0% { opacity: 1; }
+	60% { opacity: 1; }
+	61% { opacity: 0; }
+	100% { opacity: 0; }
+
+}
+
+p.b {
+	animation: blink 1.5s infinite;
+}
+
+p.b.q {
+	animation-duration: .25s;
 }
