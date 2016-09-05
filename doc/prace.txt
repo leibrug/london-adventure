@@ -18,4 +18,30 @@ X intro - animacja po:
 17:00 - 19:30 (2,5h)
 X logo
 X chmury
-~ event pod "start" i przejście do kolejnego widoku
+X event pod "start" i przejście do kolejnego widoku
+20:00 - 23:15 (3,25h)
+X postacie pixel art
+X próba refactoringu [ZA WCZEŚNIE! :/]
+
+
+5.09.2016
+
+13:00 - 13:45 (0,75h)
+~ Greg
+	X obrazek
+	X obrazek na canvasie
+	X ramka
+13:45 -
+~ Greg c.d.
+	~ poruszanie ramką
+	- aktywacja ramki
+	- przesuwanie fragmentów obrazka
+	- shufflowanie
+	- logika i sprawdzanie kompletności
+	- animacja 'wyjazdu' gotowego banknotu
+		+ animacja 'wjazdu' nowej układanki
+	- punktacja
+	- timer
+	- UI rundy
+	- zdarzenia losowe - ktoś zabiera
+		+ drapanie po głowie!
