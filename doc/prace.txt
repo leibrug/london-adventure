@@ -38,9 +38,13 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 ~ Greg c.d.
 	X poruszanie ramką
 		X blokage
-15:30 -
+15:30 - 16:30 (1h)
 ~ Greg c.d.
 	X odblokowywanie ramki na ruch
+	X wyciągnięcie fragmentów do przesunięcia
+	X rysowanie czarnego prostokąta (placeholdera) pod przesuwane fragmenty
+
+~ Greg c.d.
 	~ przesuwanie fragmentów obrazka
 	- shufflowanie
 	- logika i sprawdzanie kompletności
@@ -59,3 +63,4 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 
 - Greg:
 		- bardziej bajerancki ruch ramki (rozszerz i zmniejsz na nowej pozycji!
+		- ramka jako gradient?

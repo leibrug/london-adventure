@@ -47,7 +47,7 @@ var gGreg = function() {
         frameState = Math.abs(frameState - 1);
         if (frameState === 1) {
           frameOverPiece = c.getImageData(40 + framePositionX * 60, 60 + framePositionY * 60, 60, 60);
-          console.log(frameOverPiece);
+          // console.log(frameOverPiece);
         }
       }
       else {
@@ -80,7 +80,7 @@ var gGreg = function() {
           frameMoveTimeStamp = timeStamp;
           if (frameState === 1) {
             frameUnderPiece = c.getImageData(40 + framePositionX * 60 + frameUnderPieceOffsetX, 60 + framePositionY * 60 + frameUnderPieceOffsetY, 60, 60);
-            console.log(frameUnderPiece);
+            // console.log(frameUnderPiece);
           }
         }
         else if (frameState === 1) {
@@ -107,6 +107,13 @@ var gGreg = function() {
           case '↓':
             frameOffsetY = offset;
             break;
+        }
+        if (frameState === 1) {
+          var fillOffsetX = (frameMoveDirection === '←') ? -60 : 0;
+          var fillOffsetY = (frameMoveDirection === '↑') ? -60 : 0;
+          var fillMultiplierX = (frameMoveDirection === '←' || frameMoveDirection === '→') ? 2 : 1;
+          var fillMultiplierY = (frameMoveDirection === '↑' || frameMoveDirection === '↓') ? 2 : 1;
+          c.fillRect(40 + framePositionX * 60 + fillOffsetX, 60 + framePositionY * 60 + fillOffsetY, 60 * fillMultiplierX, 60 * fillMultiplierY);
         }
       }
       else {
