@@ -15,6 +15,8 @@ var gGreg = function() {
   var frameStyles = ['#dcb42c', '#f8f478'];
   var frameMoveTimeStamp = 0;
   var frameMoveDirection;
+  var frameOverPiece;
+  var frameUnderPiece;
 
   // Set up stroke for frame
 
@@ -43,30 +45,43 @@ var gGreg = function() {
     if (isKeyDown) {
       if (currentKey === 32) {
         frameState = Math.abs(frameState - 1);
-        c.strokeStyle = frameStyles[frameState];
+        if (frameState === 1) {
+          frameOverPiece = c.getImageData(40 + framePositionX * 60, 60 + framePositionY * 60, 60, 60);
+          console.log(frameOverPiece);
+        }
       }
       else {
         var canMove = false;
+        var frameUnderPieceOffsetX = 0;
+        var frameUnderPieceOffsetY = 0;
         switch (currentKey) {
           case 37:
             canMove = framePositionX > 0;
             frameMoveDirection = '←';
+            frameUnderPieceOffsetX = -60;
             break;
           case 38:
             canMove = framePositionY > 0;
             frameMoveDirection = '↑';
+            frameUnderPieceOffsetY = -60;
             break;
           case 39:
             canMove = framePositionX < 3;
             frameMoveDirection = '→';
+            frameUnderPieceOffsetX = 60;
             break;
           case 40:
             canMove = framePositionY < 1;
             frameMoveDirection = '↓';
+            frameUnderPieceOffsetY = 60;
             break;
         }
         if (canMove) {
           frameMoveTimeStamp = timeStamp;
+          if (frameState === 1) {
+            frameUnderPiece = c.getImageData(40 + framePositionX * 60 + frameUnderPieceOffsetX, 60 + framePositionY * 60 + frameUnderPieceOffsetY, 60, 60);
+            console.log(frameUnderPiece);
+          }
         }
         else if (frameState === 1) {
           frameState = 0;
