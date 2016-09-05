@@ -12,18 +12,28 @@ var gGreg = function() {
     [5, 6, 7, 8]
   ];
   var framePosition = 1;
+  var frameState = 0;
+  var frameStyles = ['#dcb42c', '#f8f478'];
+
+  // Set up stroke for frame
+
+  c.lineWidth = 4;
+  c.strokeStyle = frameStyles[0];
+
 
 
   var previousTimeStamp = 0;
 
 
-  // Set up stroke for frame
-  c.lineWidth = 4;
-  c.strokeStyle = '#dcb42c';
-
 
   function draw(timeStamp) {
     c.drawImage(gfxBanknote, 40, 60);
+
+    if (isKeyDown && currentKey === 32) {
+      frameState = Math.abs(frameState - 1);
+      c.strokeStyle = frameStyles[frameState];
+      isKeyDown = false;
+    }
     c.strokeRect(40, 60, 60, 60);
 
     window.requestAnimationFrame(draw);
@@ -36,14 +46,14 @@ var gGreg = function() {
   var currentKey;
 
   function keyDownHandler(event) {
-    if ([37, 38, 39, 40].indexOf(event.keyCode) !== -1) {
+    if ([32, 37, 38, 39, 40].includes(event.keyCode)) {
       isKeyDown = true;
       currentKey = event.keyCode;
     }
   }
 
   function keyUpHandler(event) {
-    
+
   }
 
 

@@ -31,10 +31,12 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 	X obrazek
 	X obrazek na canvasie
 	X ramka
-13:45 -
+13:45 - 14:15 (0,5h)
 ~ Greg c.d.
-	~ poruszanie ramką
-	- aktywacja ramki
+	X aktywacja ramki
+14:15 - 
+~ Greg c.d.
+	~~ poruszanie ramką
 	- przesuwanie fragmentów obrazka
 	- shufflowanie
 	- logika i sprawdzanie kompletności
