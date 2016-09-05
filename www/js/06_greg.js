@@ -83,8 +83,8 @@ var gGreg = function() {
 
     if (frameMoveTimeStamp !== 0) {
       var delta = timeStamp - frameMoveTimeStamp;
-      if (delta < 250) {
-        var offset = Math.min(delta/4.17, 60);
+      if (delta < 200) {
+        var offset = Math.min(delta/3.33, 60);
 
         switch (frameMoveDirection) {
           case '←':
@@ -140,15 +140,11 @@ var gGreg = function() {
     }
   }
 
-  function keyUpHandler(event) {
-
-  }
 
 
   return {
     start: () => {
       g.addEventListener('keydown', keyDownHandler, false);
-      g.addEventListener('keyup', keyUpHandler, false);
       animationFrame = window.requestAnimationFrame(draw);
     }
   };
