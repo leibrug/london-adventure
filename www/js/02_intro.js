@@ -1,8 +1,8 @@
-sT(() => {
-	queueText(0);
-	queueText(1);
-	unqueueText();
-}, 1000);
+// sT(() => {
+// 	queueText(0);
+// 	queueText(1);
+// 	unqueueText();
+// }, 1000);
 
 var skyElem = getImg('img/02_intro/sky.png');
 var panoramaElem = getImg('img/02_intro/panorama.gif');
@@ -35,7 +35,7 @@ function cloudPosition(i, tS) {
 	var cloud = overSky[i];
 	if ((cloud.dir === 'W' && cloud.x < cloud.img.width * -1)
 		|| (cloud.dir === 'E' && cloud.x > 320)) {
-		overSky[i] = new Cloud();	
+		overSky[i] = new Cloud();
 	}
 	else {
 		cloud.x = cloud.x + ((tS - oldTs)/50 * cloud.speed) * (cloud.dir === 'W' ? -1 : 1);
@@ -48,29 +48,29 @@ var startPressedTime;
 var oldTs = 0;
 
 function introFrame(tS) {
-	
+
 	// Sky
 	var skyOffset = M.max(tS/-16.7, -480);
 	c.drawImage(skyElem, 0, skyOffset, 320, 720);
 
 	// Black overlay
 	if (tS <= 2500) {
-		var blackOpacity = M.min((2500 - tS) / 2000, 1);		
+		var blackOpacity = M.min((2500 - tS) / 2000, 1);
 		c.fillStyle = 'rgba(0, 0, 0, ' + blackOpacity + ')';
 		c.fillRect(0, 0, 320, 240);
 	}
-	
+
 	// Panorama
 	if (tS > 5000) {
 		var panoramaOffset = M.max(240-(tS-5000)/37.5, 160)
 		c.drawImage(panoramaElem, 0, panoramaOffset);
 	}
-	
+
 	// Logo and clouds
 	if (tS > 8250) {
 		for (var i = 0; i <= cloudsAmount; i++) {
 			if (i === logoOrder) {
-				c.drawImage(logoElem, 70, 15);				
+				c.drawImage(logoElem, 70, 15);
 			}
 			else {
 				var cloud = overSky[i];
@@ -79,7 +79,7 @@ function introFrame(tS) {
 			}
 		}
 	}
-	
+
 	// Start text
 	if (tS > 9000 && !isStartShowed) {
 		queueText(2, ['p', 'b', 'o']);
@@ -87,14 +87,14 @@ function introFrame(tS) {
 		g.addEventListener('keydown', keyHandler, false);
 		isStartShowed = true;
 	}
-	
+
 	// Fade out
 	if (startPressedTime) {
 		var blackOpacity = M.min((tS - startPressedTime - 500) / 1000, 1);
 		c.fillStyle = 'rgba(0, 0, 0, ' + blackOpacity + ')';
 		c.fillRect(0, 0, 320, 240);
 	}
-	
+
 	oldTs = tS;
 	rAf(introFrame);
 }
@@ -113,4 +113,4 @@ function endIntro() {
 	hideText();
 }
 
-var introReq = rAf(introFrame);
+// var introReq = rAf(introFrame);
