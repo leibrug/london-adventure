@@ -34,9 +34,12 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 13:45 - 14:15 (0,5h)
 ~ Greg c.d.
 	X aktywacja ramki
-14:15 - 
+14:15 - 15:30 (1,25h)
 ~ Greg c.d.
-	~~ poruszanie ramką
+	X poruszanie ramką
+		X blokage
+15:30 -
+~ Greg c.d.
 	- przesuwanie fragmentów obrazka
 	- shufflowanie
 	- logika i sprawdzanie kompletności
