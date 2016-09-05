@@ -67,15 +67,9 @@ var gGreg = function() {
         }
         if (canMove) {
           frameMoveTimeStamp = timeStamp;
-          if (frameState === 0) {
-
-          }
-          else {
-            // TODO: move pieces
-          }
         }
         else if (frameState === 1) {
-          // TODO: reset if frame state is 1 and can't move
+          frameState = 0;
         }
       }
       isKeyDown = false;

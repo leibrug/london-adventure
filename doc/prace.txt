@@ -40,6 +40,7 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 		X blokage
 15:30 -
 ~ Greg c.d.
+	~ odblokowywanie ramki na ruch
 	- przesuwanie fragmentów obrazka
 	- shufflowanie
 	- logika i sprawdzanie kompletności
@@ -50,3 +51,11 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 	- UI rundy
 	- zdarzenia losowe - ktoś zabiera
 		+ drapanie po głowie!
+
+
+
+
+===[ TODOS ]===
+
+- Greg:
+		- bardziej bajerancki ruch ramki (rozszerz i zmniejsz na nowej pozycji!
