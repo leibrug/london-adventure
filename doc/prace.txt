@@ -40,8 +40,8 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 		X blokage
 15:30 -
 ~ Greg c.d.
-	~ odblokowywanie ramki na ruch
-	- przesuwanie fragmentów obrazka
+	X odblokowywanie ramki na ruch
+	~ przesuwanie fragmentów obrazka
 	- shufflowanie
 	- logika i sprawdzanie kompletności
 	- animacja 'wyjazdu' gotowego banknotu

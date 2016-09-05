@@ -79,7 +79,6 @@ var gGreg = function() {
       var delta = timeStamp - frameMoveTimeStamp;
       if (delta < 200) {
         var offset = Math.min(delta/3.33, 60);
-
         switch (frameMoveDirection) {
           case '←':
             frameOffsetX = -offset;
@@ -96,6 +95,7 @@ var gGreg = function() {
         }
       }
       else {
+        frameState = 0;
         frameMoveTimeStamp = 0;
         switch (frameMoveDirection) {
           case '←':
