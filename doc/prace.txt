@@ -56,7 +56,8 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 10:15 - 10:45 (0,5h)
 ~ Greg c.d.
 	X shufflowanie (logika)
-10:45 -
+10:45 - 11:30 (0,75h)
+11:45 - 
 ~ Greg c.d.
 	~~ shufflowanie (grafika)
 	- logika i sprawdzanie kompletności
