@@ -1,40 +1,36 @@
 var gGreg = function() {
 
 
+  /* Banknote graphics*/
+
   // TODO: multiple sources
   var banknoteGfx = getImg('img/06_greg/banknote.png');
   var banknoteImageData = null;
 
-  var animationFrame;
 
-
-
+  /* Frame */
 
   var framePositionX = 0;
   var framePositionY = 0;
   var frameState = 0;
   var frameStyles = ['#dcb42c', '#f8f478'];
   var frameMoveTimeStamp = 0;
-  var frameMoveDirection = null;
+  var frameMoveDirection;
   var frameOverPiece;
   var frameUnderPiece;
-
-  // Set up stroke for frame
 
   c.lineWidth = 4;
   c.strokeStyle = frameStyles[0];
 
 
+  /* Main loop */
 
-
-
+  var animationFrame;
   var previousTimeStamp = 0;
 
-
-
   function draw(timeStamp) {
-    // TODO: draw anything only on changes
 
+    // Initial draw - background and banknote
     c.strokeStyle = '#000000';
     c.strokeRect(40, 60, 240, 120);
     if (banknoteImageData) {
@@ -44,6 +40,7 @@ var gGreg = function() {
       c.drawImage(banknoteGfx, 40, 60);
     }
 
+    // Change frame state / setup pieces move
     var frameOffsetX = 0;
     var frameOffsetY = 0;
 
@@ -93,6 +90,7 @@ var gGreg = function() {
       isKeyDown = false;
     }
 
+    // Move frame and pieces
     if (frameMoveTimeStamp !== 0) {
       var delta = timeStamp - frameMoveTimeStamp;
       if (delta < 200) {
@@ -164,6 +162,8 @@ var gGreg = function() {
           banknoteImageData = c.getImageData(40, 60, 240, 120);
         }
         // (Re)set vars
+        frameState = 0;
+        frameMoveTimeStamp = 0;
         switch (frameMoveDirection) {
           case '←':
             framePositionX -= 1;
@@ -178,12 +178,10 @@ var gGreg = function() {
             framePositionY += 1;
             break;
         }
-        frameState = 0;
-        frameMoveTimeStamp = 0;
-        frameMoveDirection = null;
       }
     }
 
+    // Place frame
     c.strokeStyle = frameStyles[frameState];
     c.strokeRect(40 + framePositionX * 60 + frameOffsetX, 60 + framePositionY * 60 + frameOffsetY, 60, 60);
 
@@ -192,7 +190,7 @@ var gGreg = function() {
   }
 
 
-  // Controls
+  /* Controls */
 
   var isKeyDown = false;
   var currentKey;
@@ -205,6 +203,7 @@ var gGreg = function() {
   }
 
 
+  /* Interface */
 
   return {
     start: () => {
