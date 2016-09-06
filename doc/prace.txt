@@ -69,10 +69,13 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 13:30 - 14:00 (0,5h)
 ~ Greg c.d.
 	X różne banknoty (logika)
-14:00 -
+14:15 - 14:30 (0,25h)
 ~ Greg c.d.
-	- animacja 'wyjazdu' gotowego banknotu
-		+ animacja 'wjazdu' nowej układanki
+	X animacja 'wyjazdu' gotowego banknotu
+
+~ Greg c.d.
+	~ animacja 'wjazdu' nowej układanki
+
 	- punktacja
 	- timer
 	- UI rundy

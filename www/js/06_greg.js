@@ -3,7 +3,6 @@ var gGreg = function() {
 
   /* Banknotes */
 
-  // TODO: multiple sources
   var banknotes = [
     { value: 5, src: 'img/06_greg/banknote-5.png' },
     { value: 10, src: 'img/06_greg/banknote-10.png' },
@@ -11,7 +10,6 @@ var gGreg = function() {
     { value: 50, src: 'img/06_greg/banknote-50.png' }
   ];
   var banknoteImg = getImg();
-  // var banknoteImg = getImg(banknotes[0].src);
   var banknoteImageData = null;
 
   // Place new banknote
@@ -35,7 +33,11 @@ var gGreg = function() {
       var row = (ordered.length > 4) ? 0 : 1;
       shuffled[row].push(ordered.splice(Math.floor(Math.random() * ordered.length), 1)[0]);
     }
-    return shuffled;
+    // return shuffled;
+    return [
+      [4, 1, 2, 3],
+      [0, 5, 6, 7]
+    ];
   }
 
   function isBanknoteCompleted() {
@@ -64,6 +66,10 @@ var gGreg = function() {
       banknoteImageData = bitmap;
     }, (error) => { console.error(error); });
   }
+
+  // Banknotes switching
+  var banknoteSwitchTimeStamp = 0;
+  var banknoteDropImageData = null;
 
 
   /* Frame */
@@ -99,7 +105,7 @@ var gGreg = function() {
         c.drawImage(banknoteImageData, pieceCoord.x, pieceCoord.y, 60, 60, 40 + banknotePieceCoord[i].x, 60 + banknotePieceCoord[i].y, 60, 60);
       }
     }
-    else if (banknoteImageData) {
+    else if (banknoteImageData && banknoteSwitchTimeStamp === 0) {
       c.putImageData(banknoteImageData, 40, 60);
     }
 
@@ -240,6 +246,11 @@ var gGreg = function() {
           var tempPieceValue = banknoteState[framePositionY][framePositionX];
           banknoteState[framePositionY][framePositionX] = banknoteState[targetFramePositionY][targetFramePositionX];
           banknoteState[targetFramePositionY][targetFramePositionX] = tempPieceValue;
+          // Banknote completed
+          if (isBanknoteCompleted()) {
+            banknoteSwitchTimeStamp = timeStamp;
+            banknoteDropImageData = banknoteImageData;
+          }
         }
         // (Re)set vars
         frameState = 0;
@@ -258,6 +269,21 @@ var gGreg = function() {
             framePositionY += 1;
             break;
         }
+      }
+    }
+
+    // Switch to new banknote
+    if (banknoteSwitchTimeStamp !== 0) {
+      var delta = timeStamp - banknoteSwitchTimeStamp;
+      if (delta < 500) {
+        c.fillRect(40, 60, 240, 180);
+        if (delta < 250) {
+          c.putImageData(banknoteDropImageData, 40, 60 + Math.min(delta*0.72, 180));
+        }
+      }
+      else {
+        banknoteSwitchTimeStamp = 0;
+        banknoteDropImageData = null;
       }
     }
 
