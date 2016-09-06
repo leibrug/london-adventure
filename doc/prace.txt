@@ -57,10 +57,14 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 ~ Greg c.d.
 	X shufflowanie (logika)
 10:45 - 11:30 (0,75h)
-11:45 - 
+11:45 - 12:30 (0,75h)
 ~ Greg c.d.
-	~~ shufflowanie (grafika)
-	- logika i sprawdzanie kompletności
+	X shufflowanie (grafika)
+12:30 - 13:00 (0,5h)
+~ Greg c.d.
+	X logika i sprawdzanie kompletności
+13:00 - 
+~ Greg c.d.
 	- animacja 'wyjazdu' gotowego banknotu
 		+ animacja 'wjazdu' nowej układanki
 	- różne banknoty (więcej niż 1)

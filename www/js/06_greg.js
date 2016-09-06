@@ -190,27 +190,38 @@ var gGreg = function() {
         }
       }
       else {
-        // Remember image after move
         if (frameState === 1) {
+          // Target frame position
+          var targetFramePositionX = framePositionX;
+          var targetFramePositionY = framePositionY;
+          // Remember image after move
           var frameOverPieceOffsetX = 0;
           var frameOverPieceOffsetY = 0;
           switch (frameMoveDirection) {
             case '←':
+              targetFramePositionX -= 1;
               frameOverPieceOffsetX -= 60;
               break;
             case '↑':
+              targetFramePositionY -= 1;
               frameOverPieceOffsetY -= 60;
               break;
             case '→':
+              targetFramePositionX += 1;
               frameOverPieceOffsetX += 60;
               break;
             case '↓':
+              targetFramePositionY += 1;
               frameOverPieceOffsetY += 60;
               break;
           }
           c.putImageData(frameUnderPiece, 40 + framePositionX * 60, 60 + framePositionY * 60);
           c.putImageData(frameOverPiece, 40 + framePositionX * 60 + frameOverPieceOffsetX, 60 + framePositionY * 60 + frameOverPieceOffsetY);
           banknoteImageData = c.getImageData(40, 60, 240, 120);
+          // Update state
+          var tempPieceValue = banknoteState[framePositionY][framePositionX];
+          banknoteState[framePositionY][framePositionX] = banknoteState[targetFramePositionY][targetFramePositionX];
+          banknoteState[targetFramePositionY][targetFramePositionX] = tempPieceValue;
         }
         // (Re)set vars
         frameState = 0;
