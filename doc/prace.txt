@@ -53,12 +53,16 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 9:00 - 10:15 (1,25h)
 ~ Greg c.d.
 	X zapisywanie stanu obrazka w miarę zmian
-10:15 -
+10:15 - 10:45 (0,5h)
 ~ Greg c.d.
-	~ shufflowanie
+	X shufflowanie (logika)
+10:45 -
+~ Greg c.d.
+	~~ shufflowanie (grafika)
 	- logika i sprawdzanie kompletności
 	- animacja 'wyjazdu' gotowego banknotu
 		+ animacja 'wjazdu' nowej układanki
+	- różne banknoty (więcej niż 1)
 	- punktacja
 	- timer
 	- UI rundy

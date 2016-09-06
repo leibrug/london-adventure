@@ -1,11 +1,45 @@
 var gGreg = function() {
 
 
-  /* Banknote graphics*/
+  /* Banknotes */
 
   // TODO: multiple sources
   var banknoteGfx = getImg('img/06_greg/banknote.png');
   var banknoteImageData = null;
+
+  // Place new banknote
+  var banknoteState;
+  function placeBanknote() {
+    do {
+      banknoteState = getShuffledBanknoteState();
+    } while (isBanknoteCompleted());
+    getShuffledBanknoteImageData();
+  }
+  placeBanknote();
+
+  // Shuffle pieces (logic)
+  function getShuffledBanknoteState() {
+    var ordered = [0, 1, 2, 3, 4, 5, 6, 7];
+    var shuffled = [[], []];
+    while (ordered.length > 0) {
+      var row = (ordered.length > 4) ? 0 : 1;
+      shuffled[row].push(ordered.splice(Math.floor(Math.random() * ordered.length), 1)[0]);
+    }
+    return shuffled;
+  }
+
+  function isBanknoteCompleted() {
+    return banknoteState[0].join('') + banknoteState[1].join('') === '01234567';
+  }
+
+  // Shuffle pieces (graphics)
+  var banknotePieceCoord = [
+    { x: 0, y: 0 }, { x: 60, y: 0 }, { x: 120, y: 0 }, { x: 180, y: 0 },
+    { x: 0, y: 60 }, { x: 60, y: 60 }, { x: 120, y: 60 }, { x: 180, y: 60 }
+  ];
+  function getShuffledBanknoteImageData() {
+    
+  }
 
 
   /* Frame */
