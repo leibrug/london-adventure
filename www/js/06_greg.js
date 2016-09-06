@@ -78,12 +78,12 @@ var gGreg = function() {
         c.drawImage(banknoteImageData, pieceCoord.x, pieceCoord.y, 60, 60, 40 + banknotePieceCoord[i].x, 60 + banknotePieceCoord[i].y, 60, 60);
       }
     }
-    // /*else*/ if (banknoteImageData) {
-    //   c.putImageData(banknoteImageData, 40, 60);
-    // }
-    // else {
-    //   c.drawImage(banknoteGfx, 40, 60);
-    // }
+    else if (banknoteImageData) {
+      c.putImageData(banknoteImageData, 40, 60);
+    }
+    else {
+      c.drawImage(banknoteGfx, 40, 60);
+    }
 
     // Remember shuffled image
     if (isBanknoteShuffled) {
