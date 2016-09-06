@@ -116,6 +116,23 @@ var gGreg = function() {
           var fillMultiplierY = (frameMoveDirection === '↑' || frameMoveDirection === '↓') ? 2 : 1;
           c.fillRect(40 + framePositionX * 60 + fillOffsetX, 60 + framePositionY * 60 + fillOffsetY, 60 * fillMultiplierX, 60 * fillMultiplierY);
           // "Under" piece (target position)
+          var frameUnderPiecePositionX = 40 + framePositionX * 60;
+          var frameUnderPiecePositionY = 60 + framePositionY * 60;
+          switch (frameMoveDirection) {
+            case '←':
+              frameUnderPiecePositionX -= 60;
+              break;
+            case '↑':
+              frameUnderPiecePositionY -= 60;
+              break;
+            case '→':
+              frameUnderPiecePositionX += 60;
+              break;
+            case '↓':
+              frameUnderPiecePositionY += 60;
+              break;
+          }
+          c.putImageData(frameUnderPiece, frameUnderPiecePositionX - frameOffsetX, frameUnderPiecePositionY - frameOffsetY);
           // "Over" piece (source position)
           c.putImageData(frameOverPiece, 40 + framePositionX * 60 + frameOffsetX, 60 + framePositionY * 60 + frameOffsetY);
         }
