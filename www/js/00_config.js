@@ -15,9 +15,9 @@ var g = document.getElementById('game');
 var c = g.getContext('2d');
 
 // TODO: enable?
-//c.webkitImageSmoothingEnabled = false;
-//c.mozImageSmoothingEnabled = false;
-//c.imageSmoothingEnabled = false;
+c.webkitImageSmoothingEnabled = false;
+c.mozImageSmoothingEnabled = false;
+c.imageSmoothingEnabled = false;
 
 c.fillRect(0, 0, 320, 240);
 

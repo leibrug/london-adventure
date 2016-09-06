@@ -109,11 +109,15 @@ var gGreg = function() {
             break;
         }
         if (frameState === 1) {
+          // Black fill under moving pieces
           var fillOffsetX = (frameMoveDirection === '←') ? -60 : 0;
           var fillOffsetY = (frameMoveDirection === '↑') ? -60 : 0;
           var fillMultiplierX = (frameMoveDirection === '←' || frameMoveDirection === '→') ? 2 : 1;
           var fillMultiplierY = (frameMoveDirection === '↑' || frameMoveDirection === '↓') ? 2 : 1;
           c.fillRect(40 + framePositionX * 60 + fillOffsetX, 60 + framePositionY * 60 + fillOffsetY, 60 * fillMultiplierX, 60 * fillMultiplierY);
+          // "Under" piece (target position)
+          // "Over" piece (source position)
+          c.putImageData(frameOverPiece, 40 + framePositionX * 60 + frameOffsetX, 60 + framePositionY * 60 + frameOffsetY);
         }
       }
       else {

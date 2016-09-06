@@ -44,8 +44,12 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 	X wyciągnięcie fragmentów do przesunięcia
 	X rysowanie czarnego prostokąta (placeholdera) pod przesuwane fragmenty
 
+
+6.09.2016
+
+8:45 -
 ~ Greg c.d.
-	~ przesuwanie fragmentów obrazka
+	~~ przesuwanie fragmentów obrazka
 	- shufflowanie
 	- logika i sprawdzanie kompletności
 	- animacja 'wyjazdu' gotowego banknotu
