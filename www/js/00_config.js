@@ -26,7 +26,7 @@ c.fillRect(0, 0, 320, 240);
 
 function getImg(path) {
 	var img = document.createElement('img');
-	img.src = path;
+	if (path) { img.src = path; }
 	return img;
 }
 

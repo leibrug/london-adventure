@@ -4,16 +4,26 @@ var gGreg = function() {
   /* Banknotes */
 
   // TODO: multiple sources
-  var banknoteGfx = getImg('img/06_greg/banknote.png'); // TODO: remove as banknoteGfx
+  var banknotes = [
+    { value: 5, src: 'img/06_greg/banknote-5.png' },
+    { value: 10, src: 'img/06_greg/banknote-10.png' },
+    { value: 20, src: 'img/06_greg/banknote-20.png' },
+    { value: 50, src: 'img/06_greg/banknote-50.png' }
+  ];
+  var banknoteImg = getImg();
+  // var banknoteImg = getImg(banknotes[0].src);
   var banknoteImageData = null;
 
   // Place new banknote
   var banknoteState;
+  var banknoteValue = 0;
   function placeBanknote() {
     do {
       banknoteState = getShuffledBanknoteState();
     } while (isBanknoteCompleted());
-    getBanknoteImageData();
+    var banknoteId = getBanknoteId();
+    banknoteValue = banknotes[banknoteId].value;
+    getBanknoteImageData(banknoteId);
   }
   placeBanknote();
 
@@ -32,17 +42,27 @@ var gGreg = function() {
     return banknoteState[0].concat(banknoteState[1]).join('') === '01234567';
   }
 
+  function getBanknoteId() {
+    var chance = Math.random();
+    var id = 3;
+    if (chance < 0.9) { id = 2; }
+    if (chance < 0.7) { id = 1; }
+    if (chance < 0.4) { id = 0; }
+    return id;
+  }
+
   // Shuffle pieces (graphics)
   var isBanknoteShuffled = false;
   var banknotePieceCoord = [
     { x: 0, y: 0 }, { x: 60, y: 0 }, { x: 120, y: 0 }, { x: 180, y: 0 },
     { x: 0, y: 60 }, { x: 60, y: 60 }, { x: 120, y: 60 }, { x: 180, y: 60 }
   ];
-  function getBanknoteImageData() {
-    createImageBitmap(banknoteGfx).then((bitmap) => {
+  function getBanknoteImageData(banknoteId) {
+    banknoteImg.src = banknotes[banknoteId].src;
+    createImageBitmap(banknoteImg).then((bitmap) => {
       isBanknoteShuffled = true;
       banknoteImageData = bitmap;
-    });
+    }, (error) => { console.error(error); });
   }
 
 
@@ -71,6 +91,7 @@ var gGreg = function() {
     // Initial draw - background and banknote
     c.strokeStyle = '#000000';
     c.strokeRect(40, 60, 240, 120);
+
     if (isBanknoteShuffled) {
       for (var i = 0; i < 8; i++) {
         var row = (i < 4) ? 0 : 1;
@@ -80,9 +101,6 @@ var gGreg = function() {
     }
     else if (banknoteImageData) {
       c.putImageData(banknoteImageData, 40, 60);
-    }
-    else {
-      c.drawImage(banknoteGfx, 40, 60);
     }
 
     // Remember shuffled image
