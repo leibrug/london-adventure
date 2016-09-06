@@ -47,10 +47,15 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 
 6.09.2016
 
-8:45 -
+8:45 - 9:00 (0,25h)
 ~ Greg c.d.
-	~~ przesuwanie fragmentów obrazka
-	- shufflowanie
+	X przesuwanie fragmentów obrazka
+9:00 - 10:15 (1,25h)
+~ Greg c.d.
+	X zapisywanie stanu obrazka w miarę zmian
+10:15 -
+~ Greg c.d.
+	~ shufflowanie
 	- logika i sprawdzanie kompletności
 	- animacja 'wyjazdu' gotowego banknotu
 		+ animacja 'wjazdu' nowej układanki

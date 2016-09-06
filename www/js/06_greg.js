@@ -2,7 +2,8 @@ var gGreg = function() {
 
 
   // TODO: multiple sources
-  var gfxBanknote = getImg('img/06_greg/banknote.png');
+  var banknoteGfx = getImg('img/06_greg/banknote.png');
+  var banknoteImageData = null;
 
   var animationFrame;
 
@@ -14,7 +15,7 @@ var gGreg = function() {
   var frameState = 0;
   var frameStyles = ['#dcb42c', '#f8f478'];
   var frameMoveTimeStamp = 0;
-  var frameMoveDirection;
+  var frameMoveDirection = null;
   var frameOverPiece;
   var frameUnderPiece;
 
@@ -36,18 +37,21 @@ var gGreg = function() {
 
     c.strokeStyle = '#000000';
     c.strokeRect(40, 60, 240, 120);
-    c.drawImage(gfxBanknote, 40, 60);
+    if (banknoteImageData) {
+      c.putImageData(banknoteImageData, 40, 60);
+    }
+    else {
+      c.drawImage(banknoteGfx, 40, 60);
+    }
 
     var frameOffsetX = 0;
     var frameOffsetY = 0;
 
-    // TODO block if during frame move
     if (isKeyDown) {
       if (currentKey === 32) {
         frameState = Math.abs(frameState - 1);
         if (frameState === 1) {
           frameOverPiece = c.getImageData(40 + framePositionX * 60, 60 + framePositionY * 60, 60, 60);
-          // console.log(frameOverPiece);
         }
       }
       else {
@@ -80,7 +84,6 @@ var gGreg = function() {
           frameMoveTimeStamp = timeStamp;
           if (frameState === 1) {
             frameUnderPiece = c.getImageData(40 + framePositionX * 60 + frameUnderPieceOffsetX, 60 + framePositionY * 60 + frameUnderPieceOffsetY, 60, 60);
-            // console.log(frameUnderPiece);
           }
         }
         else if (frameState === 1) {
@@ -138,8 +141,29 @@ var gGreg = function() {
         }
       }
       else {
-        frameState = 0;
-        frameMoveTimeStamp = 0;
+        // Remember image after move
+        if (frameState === 1) {
+          var frameOverPieceOffsetX = 0;
+          var frameOverPieceOffsetY = 0;
+          switch (frameMoveDirection) {
+            case '←':
+              frameOverPieceOffsetX -= 60;
+              break;
+            case '↑':
+              frameOverPieceOffsetY -= 60;
+              break;
+            case '→':
+              frameOverPieceOffsetX += 60;
+              break;
+            case '↓':
+              frameOverPieceOffsetY += 60;
+              break;
+          }
+          c.putImageData(frameUnderPiece, 40 + framePositionX * 60, 60 + framePositionY * 60);
+          c.putImageData(frameOverPiece, 40 + framePositionX * 60 + frameOverPieceOffsetX, 60 + framePositionY * 60 + frameOverPieceOffsetY);
+          banknoteImageData = c.getImageData(40, 60, 240, 120);
+        }
+        // (Re)set vars
         switch (frameMoveDirection) {
           case '←':
             framePositionX -= 1;
@@ -154,6 +178,9 @@ var gGreg = function() {
             framePositionY += 1;
             break;
         }
+        frameState = 0;
+        frameMoveTimeStamp = 0;
+        frameMoveDirection = null;
       }
     }
 
