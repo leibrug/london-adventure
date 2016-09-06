@@ -41,7 +41,7 @@ var gGreg = function() {
   function getBanknoteImageData() {
     createImageBitmap(banknoteGfx).then((bitmap) => {
       isBanknoteShuffled = true;
-      // banknoteImageData = bitmap;
+      banknoteImageData = bitmap;
     });
   }
 
@@ -74,15 +74,16 @@ var gGreg = function() {
     if (isBanknoteShuffled) {
       for (var i = 0; i < 8; i++) {
         var row = (i < 4) ? 0 : 1;
-        console.log(i);
+        var pieceCoord = banknotePieceCoord[banknoteState[row][i%4]];
+        c.drawImage(banknoteImageData, pieceCoord.x, pieceCoord.y, 60, 60, 40 + banknotePieceCoord[i].x, 60 + banknotePieceCoord[i].y, 60, 60);
       }
     }
-    /*else*/ if (banknoteImageData) {
-      c.putImageData(banknoteImageData, 40, 60);
-    }
-    else {
-      c.drawImage(banknoteGfx, 40, 60);
-    }
+    // /*else*/ if (banknoteImageData) {
+    //   c.putImageData(banknoteImageData, 40, 60);
+    // }
+    // else {
+    //   c.drawImage(banknoteGfx, 40, 60);
+    // }
 
     // Remember shuffled image
     if (isBanknoteShuffled) {
