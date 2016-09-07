@@ -76,11 +76,14 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 
 7.09.2016
 
-12:45 -
+12:45 - 13:45 (1h)
 ~ Greg c.d.
-	~~ animacja 'wjazdu' nowej układanki
-	- blokada framki dopóki banknoty się zmieniają?
-	- punktacja
+	X animacja 'wjazdu' nowej układanki
+	X bug z imagem
+14:00 - 15:00 (1h)
+~ Greg c.d.
+	~ punktacja
+	~ blokada framki dopóki banknoty się zmieniają?
 	- timer
 	- UI rundy
 	- zdarzenia losowe - ktoś zabiera

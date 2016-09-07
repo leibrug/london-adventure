@@ -33,11 +33,7 @@ var gGreg = function() {
       var row = (ordered.length > 4) ? 0 : 1;
       shuffled[row].push(ordered.splice(Math.floor(Math.random() * ordered.length), 1)[0]);
     }
-    // return shuffled;
-    return [
-      [4, 1, 2, 3],
-      [0, 5, 6, 7]
-    ];
+    return shuffled;
   }
 
   function isBanknoteCompleted() {
@@ -61,10 +57,12 @@ var gGreg = function() {
   ];
   function getBanknoteImageData(banknoteId) {
     banknoteImg.src = banknotes[banknoteId].src;
-    createImageBitmap(banknoteImg).then((bitmap) => {
-      isBanknoteShuffled = true;
-      banknoteImageData = bitmap;
-    }, (error) => { console.error(error); });
+    banknoteImg.onload = () => {
+      createImageBitmap(banknoteImg).then((bitmap) => {
+        isBanknoteShuffled = true;
+        banknoteImageData = bitmap;
+      }, (error) => { console.error(error); });
+    };
   }
 
   // Banknotes switching
@@ -85,6 +83,11 @@ var gGreg = function() {
 
   c.lineWidth = 4;
   c.strokeStyle = frameStyles[0];
+
+
+  /* Points */
+
+  var points = 0;
 
 
   /* Main loop */
@@ -250,6 +253,7 @@ var gGreg = function() {
           if (isBanknoteCompleted()) {
             banknoteSwitchTimeStamp = timeStamp;
             banknoteDropImageData = banknoteImageData;
+            points += banknoteValue;
             placeBanknote();
           }
         }
