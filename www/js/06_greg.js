@@ -254,6 +254,7 @@ var gGreg = function() {
             banknoteSwitchTimeStamp = timeStamp;
             banknoteDropImageData = banknoteImageData;
             points += banknoteValue;
+            $score.innerHTML = '£' + points;
             placeBanknote();
           }
         }
@@ -323,6 +324,7 @@ var gGreg = function() {
 
   return {
     start: () => {
+      $score.innerHTML = '£' + points;
       g.addEventListener('keydown', keyDownHandler, false);
       animationFrame = window.requestAnimationFrame(draw);
     }

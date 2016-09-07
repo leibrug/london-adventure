@@ -12,6 +12,8 @@ var rAf = window.requestAnimationFrame;
 /* Canvas */
 
 var g = document.getElementById('game');
+var $score = document.getElementById('score');
+var $time = document.getElementById('time');
 var c = g.getContext('2d');
 
 // TODO: enable?

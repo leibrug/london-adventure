@@ -84,18 +84,20 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 ~ Greg c.d.
 	X punktacja
 	X blokada framki dopóki banknoty się zmieniają?
-	~ timer
-	- UI rundy
+	~~ timer
+	~ UI rundy
 
 	- zdarzenia losowe - ktoś zabiera
 		+ drapanie po głowie!
 
 
-- wszystkie linearne animacje jako funkcyjka (0~1)!
 
 
 ===[ TODOS ]===
 
+- Ogólne:
+	- wszystkie linearne animacje jako funkcyjka (0~1)!
 - Greg:
 		- bardziej bajerancki ruch ramki (rozszerz i zmniejsz na nowej pozycji!
 		- ramka jako gradient?
+		- zamiast "crop-in" skalować wjeżdżający banknot
