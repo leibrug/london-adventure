@@ -250,6 +250,7 @@ var gGreg = function() {
           if (isBanknoteCompleted()) {
             banknoteSwitchTimeStamp = timeStamp;
             banknoteDropImageData = banknoteImageData;
+            placeBanknote();
           }
         }
         // (Re)set vars
@@ -277,6 +278,9 @@ var gGreg = function() {
       var delta = timeStamp - banknoteSwitchTimeStamp;
       if (delta < 500) {
         c.fillRect(40, 60, 240, 180);
+        // TODO: scale instead expand
+        // TODO: remove "jump" at end
+        c.putImageData(banknoteImageData, 40, 60, 90 - delta*0.18, 45 - delta*0.12, 60 + delta*0.36, 30 + delta*0.24);
         if (delta < 250) {
           c.putImageData(banknoteDropImageData, 40, 60 + Math.min(delta*0.72, 180));
         }

@@ -73,9 +73,13 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 ~ Greg c.d.
 	X animacja 'wyjazdu' gotowego banknotu
 
-~ Greg c.d.
-	~ animacja 'wjazdu' nowej układanki
 
+7.09.2016
+
+12:45 -
+~ Greg c.d.
+	~~ animacja 'wjazdu' nowej układanki
+	- blokada framki dopóki banknoty się zmieniają?
 	- punktacja
 	- timer
 	- UI rundy
@@ -83,6 +87,7 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 		+ drapanie po głowie!
 
 
+- wszystkie linearne animacje jako funkcyjka (0~1)!
 
 
 ===[ TODOS ]===
