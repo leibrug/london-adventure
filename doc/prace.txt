@@ -82,10 +82,11 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 	X bug z imagem
 14:00 - 15:00 (1h)
 ~ Greg c.d.
-	~ punktacja
-	~ blokada framki dopóki banknoty się zmieniają?
-	- timer
+	X punktacja
+	X blokada framki dopóki banknoty się zmieniają?
+	~ timer
 	- UI rundy
+
 	- zdarzenia losowe - ktoś zabiera
 		+ drapanie po głowie!
 

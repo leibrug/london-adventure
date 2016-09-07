@@ -310,7 +310,9 @@ var gGreg = function() {
   var currentKey;
 
   function keyDownHandler(event) {
-    if ([32, 37, 38, 39, 40].includes(event.keyCode) && frameMoveTimeStamp === 0) {
+    if ([32, 37, 38, 39, 40].includes(event.keyCode)
+        && frameMoveTimeStamp === 0
+        && banknoteSwitchTimeStamp === 0) {
       isKeyDown = true;
       currentKey = event.keyCode;
     }
