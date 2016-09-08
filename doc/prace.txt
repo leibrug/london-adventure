@@ -84,7 +84,11 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 ~ Greg c.d.
 	X punktacja
 	X blokada framki dopóki banknoty się zmieniają?
-	~~ timer
+
+8.09.2016
+
+9:00 -
+	~~~ timer
 	~ UI rundy
 
 	- zdarzenia losowe - ktoś zabiera

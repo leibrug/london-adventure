@@ -85,9 +85,24 @@ var gGreg = function() {
   c.strokeStyle = frameStyles[0];
 
 
-  /* Points */
+  /* Score */
 
-  var points = 0;
+  var score = 0;
+  function updateScore(value) {
+    score += value || 0;
+    $score.innerHTML = '£' + score;
+  }
+
+
+  /* Timer */
+
+  // var timerState = 60;
+  // var timerPre;
+  // var timerInterval;
+  // function timer
+  // function timerUpdate() {
+  //
+  // }
 
 
   /* Main loop */
@@ -253,8 +268,7 @@ var gGreg = function() {
           if (isBanknoteCompleted()) {
             banknoteSwitchTimeStamp = timeStamp;
             banknoteDropImageData = banknoteImageData;
-            points += banknoteValue;
-            $score.innerHTML = '£' + points;
+            updateScore(banknoteValue);
             placeBanknote();
           }
         }
@@ -324,7 +338,7 @@ var gGreg = function() {
 
   return {
     start: () => {
-      $score.innerHTML = '£' + points;
+      updateScore();
       g.addEventListener('keydown', keyDownHandler, false);
       animationFrame = window.requestAnimationFrame(draw);
     }
