@@ -11,6 +11,9 @@ var gGreg = function() {
     'Another one, great!',
     'One pound used to be as much as <strong>seven</strong> zlotys!'
   ];
+  function placeText() {
+    showText(text[Math.floor(Math.random()*text.length)]);
+  }
 
 
   /* Unexpected spendings */
@@ -50,6 +53,7 @@ var gGreg = function() {
     var banknoteId = getBanknoteId();
     banknoteValue = banknotes[banknoteId].value;
     getBanknoteImageData(banknoteId);
+    placeText();
   }
   placeBanknote();
 
@@ -357,6 +361,9 @@ var gGreg = function() {
     c.strokeStyle = frameStyles[frameState];
     c.strokeRect(40 + framePositionX * 60 + frameOffsetX, 40 + framePositionY * 60 + frameOffsetY, 60, 60);
 
+    // Place head
+    c.drawImage(headImg, 0, 0, 16, 16, 16, 192, 32, 32);
+
     // previousTimeStamp = timeStamp;
     window.requestAnimationFrame(draw);
   }
@@ -384,6 +391,8 @@ var gGreg = function() {
       updateScore();
       updateTime();
       startTimer();
+      $text.classList.remove('c'); // TODO: remove
+      $text.classList.add('t');
       g.addEventListener('keydown', keyDownHandler, false);
       animationFrame = window.requestAnimationFrame(draw);
     }

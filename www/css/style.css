@@ -16,7 +16,7 @@ div {
 canvas {
 	display: block;
 	outline: none;
-	/*transform: scale(2);*/
+	transform: scale(2);
 	transform-origin: 0 0;
 	image-rendering: optimizeSpeed;
     image-rendering: -moz-crisp-edges;
@@ -80,6 +80,16 @@ p {
 .b.q {
 	animation-duration: .25s;
 }
+
+/* Character's talking */
+
+.t {
+	padding-left: 128px;
+	bottom: 64px;
+	transform: translateY(50%);
+}
+
+/* Score and time areas */
 
 .score {
 	top: 0;

@@ -89,14 +89,16 @@ X próba refactoringu [ZA WCZEŚNIE! :/]
 
 9:00 - 9:45 (0,75h)
 	X timer
-9:45 -
-	~~ UI rundy
-		- wprowadzenie?
-	- timer blokuje
-	- zdarzenia losowe - ktoś zabiera
+9:45 - 11:30 (1,75h)
+	X UI rundy
+11:45 -
+	~ zdarzenia losowe - ktoś zabiera
+		~ text + update licznika
 		- gfx łapy
 		- gfx drapania po głowie
 		+ drapanie po głowie!
+	- timer blokuje
+	- wprowadzenie?
 
 
 

@@ -1,6 +1,7 @@
 /* (Sub)titles */
 
 var p = document.getElementById('text');
+var $text = p; // TODO: replace all p references with $text
 
 var t = [
 /**/	'Leibrug presents',
@@ -23,8 +24,9 @@ function hideText() {
 	}, 300);
 }
 
-function showText(id, classList, duration) {
-	p.innerHTML = t[id];
+function showText(text, classList = [], duration) {
+	var toShow = isNaN(text) ? text : t[text];
+	p.innerHTML = toShow;
 	sT(() => {
 		p.classList.remove('f');
 	}, 50);
