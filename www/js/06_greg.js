@@ -1,6 +1,34 @@
 var gGreg = function() {
 
 
+  /* Titles */
+
+  var text = [
+    'I can do it.',
+    'Seems easy to me.',
+    'Remember son, a man\'s worth is measured by his earnings.',
+    'Just get it together...',
+    'Another one, great!',
+    'One pound used to be as much as <strong>seven</strong> zlotys!'
+  ];
+
+
+  /* Unexpected spendings */
+
+  var spendings = [
+    { cost: 10, text: 'Satellite TV is a must.' },
+    { cost: 20, text: 'Need to refill my tobacco supply. Because fuck lungs.' },
+    { cost: 50, text: 'Time for monthly interest... on another interest.' },
+    { cost: 100, text: '...and the engine just stopped. Bargain fix!' },
+    { cost: 200, text: 'One-in-a-lifetime gift for my goddaughter\'s wedding.' }
+  ];
+
+
+  /* Greg's head */
+
+  var headImg = getImg('img/06_greg/head.png');
+
+
   /* Banknotes */
 
   var banknotes = [
