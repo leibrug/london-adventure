@@ -96,13 +96,28 @@ var gGreg = function() {
 
   /* Timer */
 
-  // var timerState = 60;
-  // var timerPre;
-  // var timerInterval;
-  // function timer
-  // function timerUpdate() {
-  //
-  // }
+  var timerBase = 20;
+  var timerStart;
+  var timerInterval;
+  function startTimer() {
+    timerStart = Date.now();
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+  function updateTimer() {
+    var timerState = timerBase - Math.floor((Date.now() - timerStart) / 1000);
+    if (timerState <= 15) { $time.classList.add('b'); }
+    if (timerState <= 5) { $time.classList.add('q'); }
+    if (timerState <= 0) {
+      timerState = 0;
+      clearInterval(timerInterval);
+      $time.classList.remove('b');
+    }
+    updateTime(timerState);
+  }
+  function updateTime(value) {
+    var timeValue = isNaN(value) ? timerBase : value;
+    $time.innerHTML = ('0' + timeValue).substr(-2);
+  }
 
 
   /* Main loop */
@@ -339,6 +354,8 @@ var gGreg = function() {
   return {
     start: () => {
       updateScore();
+      updateTime();
+      startTimer();
       g.addEventListener('keydown', keyDownHandler, false);
       animationFrame = window.requestAnimationFrame(draw);
     }
