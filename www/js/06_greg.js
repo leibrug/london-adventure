@@ -129,22 +129,22 @@ var gGreg = function() {
 
     // Initial draw - background and banknote
     c.strokeStyle = '#000000';
-    c.strokeRect(40, 60, 240, 120);
+    c.strokeRect(40, 40, 240, 120);
 
     if (isBanknoteShuffled) {
       for (var i = 0; i < 8; i++) {
         var row = (i < 4) ? 0 : 1;
         var pieceCoord = banknotePieceCoord[banknoteState[row][i%4]];
-        c.drawImage(banknoteImageData, pieceCoord.x, pieceCoord.y, 60, 60, 40 + banknotePieceCoord[i].x, 60 + banknotePieceCoord[i].y, 60, 60);
+        c.drawImage(banknoteImageData, pieceCoord.x, pieceCoord.y, 60, 60, 40 + banknotePieceCoord[i].x, 40 + banknotePieceCoord[i].y, 60, 60);
       }
     }
     else if (banknoteImageData && banknoteSwitchTimeStamp === 0) {
-      c.putImageData(banknoteImageData, 40, 60);
+      c.putImageData(banknoteImageData, 40, 40);
     }
 
     // Remember shuffled image
     if (isBanknoteShuffled) {
-      banknoteImageData = c.getImageData(40, 60, 240, 120);
+      banknoteImageData = c.getImageData(40, 40, 240, 120);
       isBanknoteShuffled = false;
     }
 
@@ -156,7 +156,7 @@ var gGreg = function() {
       if (currentKey === 32) {
         frameState = Math.abs(frameState - 1);
         if (frameState === 1) {
-          frameOverPiece = c.getImageData(40 + framePositionX * 60, 60 + framePositionY * 60, 60, 60);
+          frameOverPiece = c.getImageData(40 + framePositionX * 60, 40 + framePositionY * 60, 60, 60);
         }
       }
       else {
@@ -188,7 +188,7 @@ var gGreg = function() {
         if (canMove) {
           frameMoveTimeStamp = timeStamp;
           if (frameState === 1) {
-            frameUnderPiece = c.getImageData(40 + framePositionX * 60 + frameUnderPieceOffsetX, 60 + framePositionY * 60 + frameUnderPieceOffsetY, 60, 60);
+            frameUnderPiece = c.getImageData(40 + framePositionX * 60 + frameUnderPieceOffsetX, 40 + framePositionY * 60 + frameUnderPieceOffsetY, 60, 60);
           }
         }
         else if (frameState === 1) {
@@ -223,10 +223,10 @@ var gGreg = function() {
           var fillOffsetY = (frameMoveDirection === '↑') ? -60 : 0;
           var fillMultiplierX = (frameMoveDirection === '←' || frameMoveDirection === '→') ? 2 : 1;
           var fillMultiplierY = (frameMoveDirection === '↑' || frameMoveDirection === '↓') ? 2 : 1;
-          c.fillRect(40 + framePositionX * 60 + fillOffsetX, 60 + framePositionY * 60 + fillOffsetY, 60 * fillMultiplierX, 60 * fillMultiplierY);
+          c.fillRect(40 + framePositionX * 60 + fillOffsetX, 40 + framePositionY * 60 + fillOffsetY, 60 * fillMultiplierX, 60 * fillMultiplierY);
           // "Under" piece (target position)
           var frameUnderPiecePositionX = 40 + framePositionX * 60;
-          var frameUnderPiecePositionY = 60 + framePositionY * 60;
+          var frameUnderPiecePositionY = 40 + framePositionY * 60;
           switch (frameMoveDirection) {
             case '←':
               frameUnderPiecePositionX -= 60;
@@ -243,7 +243,7 @@ var gGreg = function() {
           }
           c.putImageData(frameUnderPiece, frameUnderPiecePositionX - frameOffsetX, frameUnderPiecePositionY - frameOffsetY);
           // "Over" piece (source position)
-          c.putImageData(frameOverPiece, 40 + framePositionX * 60 + frameOffsetX, 60 + framePositionY * 60 + frameOffsetY);
+          c.putImageData(frameOverPiece, 40 + framePositionX * 60 + frameOffsetX, 40 + framePositionY * 60 + frameOffsetY);
         }
       }
       else {
@@ -272,9 +272,9 @@ var gGreg = function() {
               frameOverPieceOffsetY += 60;
               break;
           }
-          c.putImageData(frameUnderPiece, 40 + framePositionX * 60, 60 + framePositionY * 60);
-          c.putImageData(frameOverPiece, 40 + framePositionX * 60 + frameOverPieceOffsetX, 60 + framePositionY * 60 + frameOverPieceOffsetY);
-          banknoteImageData = c.getImageData(40, 60, 240, 120);
+          c.putImageData(frameUnderPiece, 40 + framePositionX * 60, 40 + framePositionY * 60);
+          c.putImageData(frameOverPiece, 40 + framePositionX * 60 + frameOverPieceOffsetX, 40 + framePositionY * 60 + frameOverPieceOffsetY);
+          banknoteImageData = c.getImageData(40, 40, 240, 120);
           // Update state
           var tempPieceValue = banknoteState[framePositionY][framePositionX];
           banknoteState[framePositionY][framePositionX] = banknoteState[targetFramePositionY][targetFramePositionX];
@@ -311,12 +311,12 @@ var gGreg = function() {
     if (banknoteSwitchTimeStamp !== 0) {
       var delta = timeStamp - banknoteSwitchTimeStamp;
       if (delta < 500) {
-        c.fillRect(40, 60, 240, 180);
+        c.fillRect(40, 40, 240, 200);
         // TODO: scale instead expand
         // TODO: remove "jump" at end
-        c.putImageData(banknoteImageData, 40, 60, 90 - delta*0.18, 45 - delta*0.12, 60 + delta*0.36, 30 + delta*0.24);
+        c.putImageData(banknoteImageData, 40, 40, 90 - delta*0.18, 45 - delta*0.12, 60 + delta*0.36, 30 + delta*0.24);
         if (delta < 250) {
-          c.putImageData(banknoteDropImageData, 40, 60 + Math.min(delta*0.72, 180));
+          c.putImageData(banknoteDropImageData, 40, 40 + Math.min(delta*0.8, 200));
         }
       }
       else {
@@ -327,7 +327,7 @@ var gGreg = function() {
 
     // Place frame
     c.strokeStyle = frameStyles[frameState];
-    c.strokeRect(40 + framePositionX * 60 + frameOffsetX, 60 + framePositionY * 60 + frameOffsetY, 60, 60);
+    c.strokeRect(40 + framePositionX * 60 + frameOffsetX, 40 + framePositionY * 60 + frameOffsetY, 60, 60);
 
     // previousTimeStamp = timeStamp;
     window.requestAnimationFrame(draw);
